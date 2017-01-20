@@ -73,14 +73,14 @@ module Payola
 
     def check_modify_permissions
       subscription = Subscription.find_by!(guid: params[:guid])
-      if self.respond_to?(:payola_can_modify_subscription?)
+#       if self.respond_to?(:payola_can_modify_subscription?)
         redirect_to(
           confirm_subscription_path(subscription),
           alert: t('payola.subscriptions.not_authorized')
         ) and return unless self.payola_can_modify_subscription?(subscription)
-      else
-        raise NotImplementedError.new("Please implement ApplicationController#payola_can_modify_subscription?")
-      end
+#       else
+#         raise NotImplementedError.new("Please implement ApplicationController#payola_can_modify_subscription?")
+#       end
     end
 
     def confirm_with_message(message)
